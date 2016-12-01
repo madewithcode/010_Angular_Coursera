@@ -16,7 +16,17 @@
     $scope.checkIfTooMuch = function() {
       console.log('checkIfTooMuch()');
 
-      var splitLunchItems = $scope.lunchItems.split(',');
+      var lunchItems = $scope.lunchItems;
+      console.log('- lunchItems: ' + lunchItems);
+      console.log('- lunchItems.length: ' + lunchItems.length);
+
+      if (lunchItems.length === 0) {
+        // nothing entered
+        $scope.outputMessage = 'Please enter data first';
+        return;
+      }
+
+      var splitLunchItems = lunchItems.split(',');
 
       var numberOfLunchItems = splitLunchItems.length;
       console.log('- numberOfLunchItems: ' + numberOfLunchItems);
