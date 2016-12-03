@@ -16,6 +16,8 @@
       var upCase = $filter('uppercase');
       $scope.name = upCase($scope.name);
     };
+    
+    // annotate the aruguments to DIContoller
     console.log($injector.annotate(DIController));
   }
 
