@@ -9,9 +9,15 @@
   <body>
     <h1>Custom Filters</h1>
     <div ng-controller='myController'>
-      {{ message1 }}
 
-      {{ message2 }}
+      <button type="button" name="button" ng-click="doSomething()">Submit</button>
+      <br>
+      {{ message }}
+      <br><br>
+
+      Change Any Word Filter - used directly from HTML:
+      <br>
+      {{ message | cawf : 'foo' : 'bar'}}
 
     </div>
   </body>
