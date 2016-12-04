@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="CounterApp">
+  <head>
+    <meta charset="utf-8">
+    <script src="/vendor/angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Digest Cycle</title>
+  </head>
+  <body ng-controller='CounterController'>
+    <h1>Digest Cycle</h1>
+
+    <div>
+      <button
+        type="button"
+        name="button"
+        ng-click="showNumberOfWatchers()">
+          Log # of Watchers
+      </button>
+
+      <button
+        type="button"
+        name="button"
+        ng-click="countOnce()">
+        Up Once Counter (once)
+      </button>
+
+      <button
+        type="button"
+        name="button"
+        ng-click="upCounter()">
+        Increment Counter
+      </button>
+    </div>
+
+    <div>
+      <input
+        type="text"
+        name=""
+        value=""
+        ng-model="name">
+    </div>
+
+    <div>
+      Once Counter: {{ onceCounter }}
+      <br>
+      Regular Counter: {{ counter }}
+    </div>
+
+  </body>
+</html>
