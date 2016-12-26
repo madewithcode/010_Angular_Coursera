@@ -1,0 +1,14 @@
+.border-red {
+    border: 5px dotted red;
+    padding: 6px;
+}
+
+.border-blue {
+    border: 5px dotted blue;
+    padding: 6px;
+}
+
+.border-green {
+    border: 5px dotted green;
+    padding: 6px;
+}

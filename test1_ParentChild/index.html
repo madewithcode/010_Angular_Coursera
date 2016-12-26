@@ -4,20 +4,26 @@
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Parent Child Scope</title>
   </head>
   <body>
-    <div class="">
-      <p>Parent Child Scope</p>
+    <h4>Parent Child Scope</h4>
 
-      <div ng-controller='myController'>
-        {{ message }}
+    <div class="border-red">
+
+      <div ng-controller='myController1' class="border-blue">
+        <p>HTML for controller1</p>
+        c = {{ c }}
+
+        <div ng-controller='myController2' class="border-green">
+          <p>HTML for controller2</p>
+          c = {{ c }}
+        </div>
 
       </div>
 
-
     </div>
-
 
   </body>
 </html>
