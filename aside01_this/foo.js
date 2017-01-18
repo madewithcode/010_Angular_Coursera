@@ -1,42 +1,47 @@
-console.log('this - [global]');
-console.log(this);
-console.log('-------------------------------');
-
-function greet() {
-    console.log('this - [global > greet()]');
+(function () {
+    console.log('this - [global]');
     console.log(this);
     console.log('-------------------------------');
-}
 
-greet();
-
-var anonGreet = function() {
-    console.log('this - [global > anonGreet()]');
-    console.log(this);
-    console.log('-------------------------------');
-};
-
-anonGreet();
-
-var myObject = {
-    name: 'John Smith',
-    log: function() {
-        console.log('this - [global > myObject{} > log()]');
-        this.name = 'Tom Ramen';
+    function greet() {
+        console.log('this - [global > greet()]');
         console.log(this);
         console.log('-------------------------------');
+    }
 
-        var deeperLog = function() {
-            console.log('this - [global > myObject{} > log() > deeperLog()]');
+    greet();
+
+    var anonGreet = function() {
+        console.log('this - [global > anonGreet()]');
+        console.log(this);
+        console.log('-------------------------------');
+    };
+
+    anonGreet();
+
+    var myObject = {
+        name: 'John Smith',
+        log: function() {
+            console.log('this - [global > myObject{} > log()]');
+            this.name = 'Tom Ramen';
             console.log(this);
             console.log('-------------------------------');
-        };
 
-        deeperLog();
-    }
-};
+            var deeperLog = function() {
+                console.log('this - [global > myObject{} > log() > deeperLog()]');
+                console.log(this);
+                console.log('-------------------------------');
+            };
 
-myObject.log();
+            deeperLog();
+        }
+    };
+
+    myObject.log();
+
+})();
+
+
 
 
 
