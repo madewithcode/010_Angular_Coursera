@@ -1,52 +1,66 @@
-<!DOCTYPE html>
-<html ng-app="ShoppingListCheckOff">
-  <head>
-    <meta charset="utf-8">
-    <script src="angular.min.js"></script>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+        .emptyMessage {
+            font-weight: bold;
+            color: red;
+            font-size: 1.2em;
+        }
+
+        li {
+            margin-bottom: 7px;
+            font-size: 1.2em;
+        }
+
+        li > button {
+            margin-left: 6px;
+        }
+
+        button > span {
+            color: green;
+        }
+    </style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
     <script src="app.js"></script>
-    <title>Module 2</title>
-  </head>
-  <body>
-    <h1>Module 2 - Services, Factories, Providers</h1>
-    <h2>Check Off Shopping List App</h2>
+</head>
+<body ng-app="ShoppingListCheckOff">
+<div class="container">
+    <h1>Shopping List Check Off</h1>
 
-    <!-- To Buy -->
-    <div ng-controller="ToBuyController as tbc">
-      <h3>To Buy</h3>
+    <div class="row">
 
-      <div>
-        <ol>
-          <li ng-repeat="item in tbc.toBuyItems">
-            Buy {{ item.quantity }} {{ item.name }}
-            <button ng-click="tbc.boughtThisItem($index)">Bought</button>
-          </li>
-        </ol>
-      </div>
+        <!-- To Buy List -->
+        <div class="col-md-6" ng-controller="ToBuyController as tbc">
+            <h2>To Buy:</h2>
+            <ul>
+                <li ng-repeat="item in tbc.itemsToBuy">Buy {{item.quantity}} {{item.name}}
+                    <button class="btn btn-default" ng-click="tbc.buyItem($index)">
+                        <span class="glyphicon glyphicon-ok"></span> 
+                        Bought
+                    </button>
+                </li>
+            </ul>
+            <div class="emptyMessage" ng-if="tbc.itemsToBuy.length === 0">
+                Everything is bought!
+            </div>
+        </div>
 
-      <div ng-if="tbc.toBuyItems.length === 0">
-        <h4>Everything is bought!</h4>
-      </div>
-
+        <!-- Already Bought List -->
+        <div class="col-md-6" ng-controller="AlreadyBoughtController as abc">
+            <h2>Already Bought:</h2>
+            <ul>
+                <li ng-repeat="item in abc.itemsAlreadyBought">Bought {{item.quantity}} {{item.name}}</li>
+            </ul>
+            <div class="emptyMessage" ng-if="abc.itemsAlreadyBought.length === 0">
+                Nothing bought yet.
+            </div>
+        </div>
     </div>
+</div>
 
-    <!-- Already Bought -->
-    <div ng-controller="AlreadyBoughtController as abc">
-      <h3>Already Bought</h3>
-
-      <div ng-if="abc.boughtItems.length === 0">
-        <h4>Nothing Bought Yet</h4>
-      </div>
-
-      <div>
-        <ol>
-          <li ng-repeat="item in abc.boughtItems">
-            Bought {{ item.quantity }} {{ item.name }}
-           </li>
-        </ol>
-      </div>
-
-
-    </div>
-
-  </body>
+</body>
 </html>
