@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1>Create and Use Promise</h1>
+<div>
+    <section>
+        <h3>CREATE promise</h3>
+
+        <ol>
+            <li>create service A (with .service)</li>
+            <li>inject $q into the service</li>
+            <li>create a variable for 'this' to provide a handle on the service methods</li>
+            <li>create a method on the service
+                <ul>
+                    <li>---- start with deferred = $q.defer()</li>
+                    <li>---- execute method logic</li>
+                    <li>---- once executed, complete by either deferred.resolve() or deferred.reject()</li>
+                    <li>---- end with returning deferred.promise</li>
+                </ul>
+            </li>
+            <li>> each method that needs to create a promise, should have its own set of above</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>USE the promise in service B</h3>
+
+        <ol>
+            <li>inject service A in service B as you want to use a method of service A in service B</li>
+
+
+            <li>get a handle on the promise
+                <ul>
+                    <li>---- promise = A.methodYouWantToCall(args)</li>
+                    <li>---- implement two functions on the promise,</li>
+                    <li>---- way1: promise.then( function(success) {} ).catch( function(error) {} )</li>
+                    <li>---- way2: promise.then( function(success) {}, function(error) {} )</li>
+                </ul>
+            </li>
+
+            <li>way1 is more suited for running multiple promises in parallel
+                <ul>
+                    <li>---- promiseOne = A.methodYouWantToCall(args)</li>
+                    <li>---- promiseTwo = A.anotherMethodYouWantToCall(args)</li>
+                    <li>---- $q.all(promiseOne, promiseTwo).then( function(success) {} ).catch( function(error) {} )</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>
+
+
+
+
+
+        </p>
+    </section>
+
+</div>
+</body>
+</html>
