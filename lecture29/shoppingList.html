@@ -1,0 +1,10 @@
+<p>List {{ listD.title }}</p>
+
+<ol>
+    <li ng-repeat="item in listD.items">
+        {{ item.quantity }} of {{ item.name }}
+        <!--<button ng-click="list.removeItem($index)">Remove Item</button>-->
+    </li>
+</ol>
+
+<div ng-if="listD.cookiesInList()">WARNING! Cookies Detected!</div>
