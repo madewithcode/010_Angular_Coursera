@@ -112,8 +112,8 @@
         var ddo = {
             templateUrl: 'shoppingList.html',
             scope: {
-                items: '<',
-                title: '@'
+                itemsx: '<itemsx',
+                titlex: '@titlez'
             },
             controller: ShoppingListDirectiveController,
             controllerAs: 'listD',
@@ -130,8 +130,8 @@
         var listC = this;
 
         listC.cookiesInList = function() {
-            for (var i = 0; i < listC.items.length; i++) {
-                var name = listC.items[i].name;
+            for (var i = 0; i < listC.itemsx.length; i++) {
+                var name = listC.itemsx[i].name;
                 if (name.toLowerCase().indexOf('cookie') !== -1) {
                     return true;
                 }
