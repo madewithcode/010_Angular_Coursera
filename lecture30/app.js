@@ -145,15 +145,20 @@
         });
 
         function displayCookieWarning() {
+            //var warningElem = element.find('div');
+            //warningElem.css('display', 'block');
 
-            var warningElem = element.find('div');
-            warningElem.css('display', 'block');
+            var warningElem = element.find('div.error');
+            warningElem.slideDown(900);
 
         }
 
         function removeCookieWarning() {
-            var warningElem = element.find('div');
-            warningElem.css('display', 'none');
+            //var warningElem = element.find('div');
+            //warningElem.css('display', 'none');
+
+            var warningElem = element.find('div.error');
+            warningElem.slideUp(900);
         }
     }
 
