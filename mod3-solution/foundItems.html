@@ -1,4 +1,6 @@
-<table class="table table-striped">
+<div class="error" ng-if="list.isEmpty()">Nothing Found!</div>
+
+<table class="table table-striped" ng-if="list.foundItemsList.length > 0">
     <thead>
     <tr>
         <th>Name</th>
@@ -7,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in foundItemsList">
+    <tr ng-repeat="item in list.foundItemsList">
         <td class="col-md-2">{{item.name}}</td>
         <td class="col-md-2">{{item.short_name}}</td>
         <td class="col-md-6">{{item.description}}</td>

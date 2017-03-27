@@ -24,14 +24,13 @@
     <div class="form-group narrow-button">
         <button class="btn btn-primary" ng-click="menu.narrowItDownForMe(menu.searchTerm)">Narrow It Down For Me!</button>
     </div>
-    
-    <div class="error" ng-if="menu.foundItemsList.length === 0">Nothing Found!</div>
+
+
 
     <!-- found-items should be implemented as a component -->
     <found-items
             found-items-list="menu.foundItemsList"
-            on-remove="menu.removeItem(index)"
-            ng-if="menu.foundItemsList.length > 0">
+            on-remove="menu.removeItem(index)">
     </found-items>
 
 </div>

@@ -24,9 +24,13 @@
         var menu = this;
 
         menu.searchTerm = '';
-        menu.foundItemsList = [];
 
         menu.narrowItDownForMe = function () {
+
+            if (menu.searchTerm === '') {
+                menu.foundItemsList = [];
+                return;
+            }
 
             var promise = MenuSearchService.getMatchedMenuItems(menu.searchTerm);
 
@@ -58,10 +62,6 @@
 
                 var foundItems = [];
 
-                if (searchTerm === '') {
-                    return foundItems;
-                }
-
                 // loop through menu items to find ones whose
                 // description matches the searchTerm
 
@@ -89,11 +89,24 @@
             scope: {
                 foundItemsList: '<',
                 onRemove: '&onRemove'
-            }
+            },
+            controller: FoundItemsDirectiveController,
+            controllerAs: 'list',
+            bindToController: true
 
         };
 
         return ddo;
+    }
+
+    // directive controller
+    function FoundItemsDirectiveController() {
+        console.log('FoundItemsDirectiveController');
+        var list = this;
+        list.isEmpty = function() {
+            console.log('isEmpty()', list.foundItemsList.length === 0);
+            return list.foundItemsList.length === 0;
+        }
     }
 
 }());
